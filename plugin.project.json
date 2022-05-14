@@ -4,15 +4,19 @@
 		"$className": "DataModel",
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
-			"Micros": {
-				"$path": "micros"
-			},
-			"Packages": {
+
+			"Plugin": {
 				"$className": "Folder",
 				"$path": "Packages",
-				"src": {
+				"micros": {
+					"$path": "micros"
+				},
+				"microgen": {
 					"$path": "src"
-				}	
+				},
+				"src": {
+					"$path": "plugin"
+				}
 			}
 		}
 	}
