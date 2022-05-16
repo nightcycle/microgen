@@ -38,7 +38,7 @@ function Micromanager:Update()
 	-- print("Update 2")
 	self:Clean()
 	self.Instance.Transparency = 1
-	local model = self.Module(self.Interface, self.Instance)
+	local model = self.Module(self.Instance)
 	if model then
 		Query.addKVTag(model, "MicroBuild", self.Type)
 		Query.addKVTag(model, "MicroBuildId", self.Id)
@@ -49,7 +49,7 @@ function Micromanager:Update()
 	end
 end
 
-function Micromanager.new(inst: Instance, moduleInst: Instance, interface: table)
+function Micromanager.new(inst: Instance, moduleInst: Instance)
 	if not inst then warn("No instance provided") return end
 	if not moduleInst then warn("No module instance provided") return end
 	if Query.getValueFromKey(inst, "MicromanagerId") then return end
@@ -66,7 +66,7 @@ function Micromanager.new(inst: Instance, moduleInst: Instance, interface: table
 	Query.addKVTag(self.Instance, "MicroType", self.Type)
 	-- print("Module Instance", moduleInst:GetFullName())
 	self.Module = require(moduleInst)
-	self.Interface = interface
+	-- self.Interface = interface
 	self._Maid:GiveTask(inst.AttributeChanged:Connect(function()
 		self:Update()
 	end))

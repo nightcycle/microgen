@@ -12,7 +12,7 @@ Interface.__index = Interface
 function Interface.load(inst, moduleInst)
 	Query.addKVTag(inst, "Loaded", true)
 
-	Micromanager.new(inst, moduleInst, Interface)
+	Micromanager.new(inst, moduleInst)
 end
 
 function Interface.unload(inst)
@@ -48,5 +48,7 @@ function Interface.set(inst, val)
 	Query.addKVTag(inst, "Loaded", false)
 	Query.addKVTag(inst, microKey, val)
 end
+
+Interface.unloadAll()
 
 return Interface
